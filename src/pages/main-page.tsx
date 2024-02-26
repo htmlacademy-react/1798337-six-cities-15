@@ -1,16 +1,13 @@
-import Offer from '../components/offer.jsx';
-
+import DestinationNavigationList from '../components/destination-navigation-list.js';
+import { DESTINATIONS } from '../components/const.js';
+import PlaceCardList from '../components/place-card-list';
+import { offerType } from '../mock/offers-mock';
 
 type MainPageProps = {
-  offersCount: number;
+  offers: offerType[];
 }
 
-function drawOffers(offersCount: number): React.JSX.Element[] {
-  const OffersArray = new Array(offersCount);
-  return OffersArray.fill(<Offer />) as React.JSX.Element[];
-}
-
-function MainPage({offersCount}:MainPageProps): JSX.Element {
+function MainPage({offers}:MainPageProps): JSX.Element {
 
   return (
 
@@ -45,6 +42,7 @@ function MainPage({offersCount}:MainPageProps): JSX.Element {
       </header>
 
       <main className="page__main page__main--index">
+        <DestinationNavigationList destinations = {DESTINATIONS} />
         <h1 className="visually-hidden">Cities</h1>
         <div className="tabs">
           <section className="locations container">
@@ -86,7 +84,7 @@ function MainPage({offersCount}:MainPageProps): JSX.Element {
           <div className="cities__places-container container">
             <section className="cities__places places">
               <h2 className="visually-hidden">Places</h2>
-              <b className="places__found">312 places to stay in Amsterdam</b>
+              <b className="places__found">{offers.length} places to stay in Amsterdam</b>
               <form className="places__sorting" action="#" method="get">
                 <span className="places__sorting-caption">Sort by</span>
                 <span className="places__sorting-type" tabIndex={0}>
@@ -103,7 +101,7 @@ function MainPage({offersCount}:MainPageProps): JSX.Element {
                 </ul>
               </form>
               <div className="cities__places-list places__list tabs__content">
-                {drawOffers(offersCount)}
+                <PlaceCardList offers = {offers} />
               </div>
             </section>
             <div className="cities__right-section">
@@ -116,6 +114,5 @@ function MainPage({offersCount}:MainPageProps): JSX.Element {
   );
 
 }
-
 
 export default MainPage;
