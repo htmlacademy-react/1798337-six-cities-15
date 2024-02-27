@@ -4,7 +4,7 @@ type DestinationProps = {
   destinations: string[];
 }
 
-function DestinationsNavigationList(props:{destinations: DestinationProps}): JSX.Element {
+function DestinationsNavigationList(props: DestinationProps): JSX.Element {
 
 
   return (

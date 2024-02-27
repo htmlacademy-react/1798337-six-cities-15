@@ -1,5 +1,5 @@
-import DestinationNavigationList from '../components/destination-navigation-list.js';
-import { DESTINATIONS } from '../components/const.js';
+// import DestinationNavigationList from '../components/destination-navigation-list.js';
+// import { DESTINATIONS } from '../components/const.js';
 import PlaceCardList from '../components/place-card-list';
 import { offerType } from '../mock/offers-mock';
 
@@ -42,7 +42,7 @@ function MainPage({offers}:MainPageProps): JSX.Element {
       </header>
 
       <main className="page__main page__main--index">
-        <DestinationNavigationList destinations = {DESTINATIONS} />
+        {/* <DestinationNavigationList destinations = {DESTINATIONS} /> */}
         <h1 className="visually-hidden">Cities</h1>
         <div className="tabs">
           <section className="locations container">
@@ -112,7 +112,6 @@ function MainPage({offers}:MainPageProps): JSX.Element {
       </main>
     </div>
   );
-
 }
 
 export default MainPage;
