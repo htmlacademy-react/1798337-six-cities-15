@@ -1,11 +1,11 @@
-import { offerType } from '../mock/offers-mock';
+import { OfferType } from '../mock/offers-mock';
 
 import PlaceCard from './place-card';
 
-function PlaceCardList(props: { offers: offerType[] }): JSX.Element {
+function PlaceCardList(props: { offers: OfferType[] }): JSX.Element {
   return (
     <>
-      {props.offers.map((offer: offerType) => (
+      {props.offers.map((offer: OfferType) => (
         <PlaceCard
           key = {offer.id}
           offer = {offer}

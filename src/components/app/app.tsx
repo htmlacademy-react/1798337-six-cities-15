@@ -1,8 +1,8 @@
 import MainPage from '../../pages/main-page';
-import { offerType } from '../../mock/offers-mock';
+import { OfferType } from '../../mock/offers-mock';
 
 type Offers = {
-  offers: offerType[];
+  offers: OfferType[];
 }
 
 function App({offers} : Offers): JSX.Element {

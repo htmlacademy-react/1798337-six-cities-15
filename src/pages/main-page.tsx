@@ -1,16 +1,15 @@
 // import DestinationNavigationList from '../components/destination-navigation-list.js';
 // import { DESTINATIONS } from '../components/const.js';
 import PlaceCardList from '../components/place-card-list';
-import { offerType } from '../mock/offers-mock';
+import { OfferType } from '../mock/offers-mock';
 
 type MainPageProps = {
-  offers: offerType[];
+  offers: OfferType[];
 }
 
 function MainPage({offers}:MainPageProps): JSX.Element {
 
   return (
-
     <div className="page page--gray page--main">
       <header className="header">
         <div className="container">
