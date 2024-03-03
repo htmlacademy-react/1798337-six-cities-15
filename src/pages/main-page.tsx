@@ -1,5 +1,5 @@
 // import DestinationNavigationList from '../components/destination-navigation-list.js';
-// import { DESTINATIONS } from '../components/const.js';
+// import { DESTINATIONS } from '../components/const.ts';
 import PlaceCardList from '../components/place-card-list';
 import { OfferType } from '../mock/offers-mock';
 
