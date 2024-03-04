@@ -4,9 +4,10 @@ import LoginPage from '../../pages/login-page';
 import OfferPage from '../../pages/offer-page';
 import NotFoundPage from '../../pages/not-found-page';
 import PrivateRoute from '../private-route';
-
+import Layout from '../layout/layout';
 import { OfferType } from '../../mock/offers-mock';
-import { AppRoute, AuthorizationStatus } from '../const';
+import { AppRoute } from '../const';
+import { getAuthorizationStatus } from '../../utils/authtorization-status';
 import {
   BrowserRouter,
   Routes,
@@ -18,39 +19,42 @@ type Offers = {
 }
 
 function App({offers} : Offers): JSX.Element {
-
-  const authorizationStatus = AuthorizationStatus.NoAuthorization;
+  const authorizationStatus = getAuthorizationStatus();
 
   return (
     <BrowserRouter>
       <Routes>
         <Route
-          // index
           path={AppRoute.Main}
-          element={<MainPage offers = {offers} />}
-        />
-        <Route
-          path={AppRoute.Favorites}
-          element={(
-            <PrivateRoute authorizationStatus={authorizationStatus}>
-              <FavoritePage />
-            </PrivateRoute>
-          )}
-        />
+          element={<Layout/>}
+        >
+          <Route
+            index
+            element={<MainPage offers = {offers} />}
+          />
+          <Route
+            path={AppRoute.Favorites}
+            element={(
+              <PrivateRoute authorizationStatus={authorizationStatus}>
+                <FavoritePage />
+              </PrivateRoute>
+            )}
+          />
 
-        <Route
-          path={AppRoute.Login}
-          element={<LoginPage />}
-        />
+          <Route
+            path={AppRoute.Login}
+            element={<LoginPage />}
+          />
 
-        <Route
-          path={AppRoute.Offer}
-          element={<OfferPage />}
-        />
-        <Route
-          path={'*'}
-          element={<NotFoundPage />}
-        />
+          <Route
+            path={AppRoute.Offer}
+            element={<OfferPage />}
+          />
+          <Route
+            path={'*'}
+            element={<NotFoundPage />}
+          />
+        </Route>
       </Routes>
     </BrowserRouter>
   );
