@@ -3,6 +3,7 @@ import FavoritePage from '../../pages/favorites-page';
 import LoginPage from '../../pages/login-page';
 import OfferPage from '../../pages/offer-page';
 import NotFoundPage from '../../pages/not-found-page';
+import PrivateRoute from '../private-route';
 
 import { OfferType } from '../../mock/offers-mock';
 import { AppRoute, AuthorizationStatus } from '../const';
@@ -30,14 +31,17 @@ function App({offers} : Offers): JSX.Element {
         />
         <Route
           path={AppRoute.Favorites}
-          element={<FavoritePage />}
+          element={(
+            <PrivateRoute authorizationStatus={authorizationStatus}>
+              <FavoritePage />
+            </PrivateRoute>
+          )}
         />
-        {/* <PrivateRoute authorizationStatus={authorizationStatus}> */}
+
         <Route
           path={AppRoute.Login}
           element={<LoginPage />}
         />
-        {/* </PrivateRoute> */}
 
         <Route
           path={AppRoute.Offer}
