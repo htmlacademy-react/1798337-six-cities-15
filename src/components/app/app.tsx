@@ -43,7 +43,11 @@ function App({offers} : Offers): JSX.Element {
 
           <Route
             path={AppRoute.Login}
-            element={<LoginPage />}
+            element={(
+              <PrivateRoute authorizationStatus={authorizationStatus} isRevers>
+                <LoginPage />
+              </PrivateRoute>
+            )}
           />
 
           <Route
