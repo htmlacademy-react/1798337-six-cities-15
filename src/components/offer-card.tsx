@@ -1,8 +1,8 @@
 import { OfferType } from '../mock/offers-mock';
 
-function PlaceCard({offer}:{offer: OfferType}): JSX.Element {
+function OfferCard({offer}:{offer: OfferType}): JSX.Element {
 
-  const {id, title, type, price, previewImage, isFavorite, isPremium, rating} = offer;
+  const {id, title, type, price, isFavorite, isPremium, rating} = offer;
 
   const classFavoriteButton = isFavorite ? 'place-card__bookmark-button--active' : '';
   const ratingInProsent = `${rating * 20}%`;
@@ -16,7 +16,7 @@ function PlaceCard({offer}:{offer: OfferType}): JSX.Element {
         : ''}
       <div className="cities__image-wrapper place-card__image-wrapper">
         <a href="#">
-          <img className="place-card__image" src={previewImage} width="260" height="200" alt="Place image" />
+          <img className="place-card__image" src={''} width="260" height="200" alt="Place image" />
         </a>
       </div>
       <div className="place-card__info">
@@ -47,4 +47,4 @@ function PlaceCard({offer}:{offer: OfferType}): JSX.Element {
   );
 }
 
-export default PlaceCard;
+export default OfferCard;
