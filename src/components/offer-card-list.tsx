@@ -1,6 +1,6 @@
 import { OfferType } from '../mock/offers-mock';
 
-import PlaceCard from './place-card';
+import PlaceCard from './offer-card';
 
 function PlaceCardList(props: { offers: OfferType[] }): JSX.Element {
   return (

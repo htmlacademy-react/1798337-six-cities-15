@@ -10,6 +10,114 @@ export type OfferType =
   rating: number;
 };
 
+export type LocationType = {
+  latitude: number;
+  longitude: number;
+  zoom: number;
+}
+
+export type CityType = {
+  name: string;
+  location: LocationType;
+};
+export type HostType = {
+    name: string;
+    avatarUrl: string;
+    isPro: boolean;
+}
+
+export type OfferType2 = {
+  id: string;
+  title: string;
+  type: string;
+  price: number;
+  city: CityType;
+  location: LocationType;
+  isFavorite: boolean;
+  isPremium: boolean;
+  rating: number;
+  description: string;
+  bedrooms: number;
+  goods: string[];
+  host: HostType;
+  images: string[];
+  maxAdults: number;
+}
+
+const OffersMock2: OfferType2[] = [
+  {
+    'id': '6af6f711-c28d-4121-82cd-e0b462a27f00',
+    'title': 'Beautiful & luxurious studio at great location',
+    'type': 'apartment',
+    'price': 120,
+    'city': {
+      'name': 'Amsterdam',
+      'location': {
+        'latitude': 52.35514938496378,
+        'longitude': 4.673877537499948,
+        'zoom': 8
+      } },
+    'location': {
+      'latitude': 52.35514938496378,
+      'longitude': 4.673877537499948,
+      'zoom': 8
+    },
+    'isFavorite': false,
+    'isPremium': false,
+    'rating': 4,
+    'description': 'A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam.',
+    'bedrooms': 3,
+    'goods': [
+      'Heating'
+    ],
+    'host': {
+      'name': 'Oliver Conner',
+      'avatarUrl': 'https://url-to-image/image.png',
+      'isPro': false
+    },
+    'images': [
+      'https://url-to-image/image.png'
+    ],
+    'maxAdults': 4
+  },
+
+  {
+    'id': 'a4938522-593f-4b60-8c61-8b21a1e0f319',
+    'title': 'Loft Studio in the Central Area 1',
+    'type': 'apartment',
+    'price': 228,
+    'city': {
+      'name': 'Amsterdam',
+      'location': {
+        'latitude': 52.35514938496378,
+        'longitude': 4.673877537499948,
+        'zoom': 8
+      } },
+    'location': {
+      'latitude': 52.35514938496378,
+      'longitude': 4.673877537499948,
+      'zoom': 8
+    },
+    'isFavorite': false,
+    'isPremium': false,
+    'rating': 3,
+    'description': 'A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam.',
+    'bedrooms': 3,
+    'goods': [
+      'Heating'
+    ],
+    'host': {
+      'name': 'Oliver Conner',
+      'avatarUrl': 'https://url-to-image/image.png',
+      'isPro': false
+    },
+    'images': [
+      'https://15.design.htmlacademy.pro/static/hotel/19.jpg'
+    ],
+    'maxAdults': 4
+  },
+
+];
 
 const OffersMock: OfferType[] = [
   {
@@ -105,4 +213,4 @@ const OffersMock: OfferType[] = [
   },
 ];
 
-export {OffersMock};
+export {OffersMock, OffersMock2};
