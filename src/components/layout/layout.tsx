@@ -12,7 +12,7 @@ export default function Layout() {
 
   return (
     <>
-      <Header pathname as AppRoute = {pathname} />
+      <Header pathname = {pathname} />
       <Outlet />
       {shouldRenderFooter ? (
         <footer className="footer container">
