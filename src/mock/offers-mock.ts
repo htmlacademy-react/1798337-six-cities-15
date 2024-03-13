@@ -8,6 +8,7 @@ export type CityType = {
   name: string;
   location: LocationType;
 };
+
 export type HostType = {
     name: string;
     avatarUrl: string;
@@ -72,7 +73,6 @@ const OffersMock: OfferType[] = [
     ],
     'maxAdults': 4
   },
-
   {
     'id': '2',
     'title': 'Loft Studio in the Central Area 1',
@@ -108,7 +108,6 @@ const OffersMock: OfferType[] = [
     ],
     'maxAdults': 4
   },
-
 ];
 
 export { OffersMock };

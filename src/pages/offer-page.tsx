@@ -1,9 +1,10 @@
 import { AuthorizationStatus } from '../components/const';
-import Reviews from '../components/reviews';
 import { useParams } from 'react-router-dom';
 import { getAuthorizationStatus } from '../utils/authtorization-status';
 import { OfferType } from '../mock/offers-mock';
 import NotFoundPage from './not-found-page';
+import ReviewForm from '../components/review-form';
+import Review from '../components/review';
 
 type OfferPageProps = {
   offers: OfferType[];
@@ -106,7 +107,7 @@ function OfferPage({offers}:OfferPageProps): JSX.Element {
 
               </div>
             </div>
-            {authorizationStatus === AuthorizationStatus.Authorization ? <Reviews /> : null}
+            <Review isAuth={authorizationStatus === AuthorizationStatus.Authorization}/>
           </div>
         </div>
         <section className="offer__map map"></section>

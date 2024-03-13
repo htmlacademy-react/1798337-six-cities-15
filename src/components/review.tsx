@@ -1,13 +1,15 @@
-import { ReviewsList } from './reviews-list';
-import {ReviewForm} from './review-form';
+import ReviewForm from './review-form';
+import ReviewsList from './reviews-list';
 
 type reviewPropsType = {
   isAuth: boolean;
 };
 
 export default function Review(isAuth:reviewPropsType) {
-  <>
-    <ReviewsList />
-    {isAuth && <ReviewForm/>}
-  </>
+  return(
+    <>
+      <ReviewsList />
+      {isAuth && <ReviewForm />}
+    </>
+  );
 }
