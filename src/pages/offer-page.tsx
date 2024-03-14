@@ -6,14 +6,6 @@ import NotFoundPage from './not-found-page';
 import Review from '../components/review';
 import { ReviewType } from '../mock/reviews-mock';
 
-// type OfferPageProps = {
-//   offers: OfferType[];
-// }
-
-// type ReviewProps = {
-//   reviews: ReviewType[];
-// }
-
 type OfferPageProps = {
   offers: OfferType[];
   reviews: ReviewType[];
@@ -37,8 +29,8 @@ function OfferPage({offers, reviews}: OfferPageProps): JSX.Element {
       <section className="offer">
         <div className="offer__gallery-container container">
           <div className="offer__gallery">
-            { images.map((image, index) => (
-              <div className="offer__image-wrapper" key={index}>
+            { images.map((image) => (
+              <div className="offer__image-wrapper" key={image}>
                 <img
                   className="offer__image"
                   src={image}
@@ -87,8 +79,8 @@ function OfferPage({offers, reviews}: OfferPageProps): JSX.Element {
             <div className="offer__inside">
               <h2 className="offer__inside-title">What&apos;s inside</h2>
               <ul className="offer__inside-list">
-                {goods.map((good, index) => (
-                  <li className="offer__inside-item" key={index}>
+                {goods.map((good) => (
+                  <li className="offer__inside-item" key={good}>
                     {good}
                   </li>
                 ))}

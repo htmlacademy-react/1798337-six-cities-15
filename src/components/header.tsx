@@ -2,18 +2,21 @@ import { getAuthorizationStatus } from '../utils/authtorization-status';
 import { AppRoute } from './const';
 import { AuthorizationStatus } from './const';
 import { Link } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 
-function Header(pathname: AppRoute):JSX.Element {
+function Header():JSX.Element {
+
+  const {pathname} = useLocation();
+  const authorizationStatus = getAuthorizationStatus();
 
   let rootClassName = '';
   let linkClassName = '';
   let shouldRenderUser = true;
-  const authorizationStatus = getAuthorizationStatus();
 
-  if (pathname === AppRoute.Main) {
+  if (pathname as AppRoute === AppRoute.Main) {
     rootClassName = 'page--gray page--main';
     linkClassName = 'header__logo-link--active';
-  } else if (pathname === AppRoute.Login) {
+  } else if (pathname as AppRoute === AppRoute.Login) {
     rootClassName = 'page--gray page--login';
     shouldRenderUser = false;
   }
