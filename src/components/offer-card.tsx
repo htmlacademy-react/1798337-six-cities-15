@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom';
 import { OfferType } from '../mock/offers-mock';
-import { AppRoute } from './const';
 
 type OfferCardPropsType = {
   offer:OfferType;
@@ -9,7 +8,7 @@ type OfferCardPropsType = {
 
 function OfferCard({offer, handleHover}:OfferCardPropsType): JSX.Element {
 
-  const {id, title, type, price, isFavorite, isPremium, rating} = offer;
+  const {id, title, type, price, isFavorite, isPremium, rating, images} = offer;
 
   const classFavoriteButton = isFavorite ? 'place-card__bookmark-button--active' : '';
   const ratingInProsent = `${rating * 20}%`;
@@ -23,7 +22,7 @@ function OfferCard({offer, handleHover}:OfferCardPropsType): JSX.Element {
   };
 
   return (
-    <Link to={`${AppRoute.Offer}/${offer.id}`}>
+    <Link to={`${'offer'}/${offer.id}`}>
       <article
         className="cities__card place-card"
         data-id={id}
@@ -36,7 +35,7 @@ function OfferCard({offer, handleHover}:OfferCardPropsType): JSX.Element {
           </div>
           : ''}
         <div className="cities__image-wrapper place-card__image-wrapper">
-          <img className="place-card__image" src={''} width="260" height="200" alt="Place image" />
+          <img className="place-card__image" src={images[0]} width="260" height="200" alt="Place image" />
         </div>
         <div className="place-card__info">
           <div className="place-card__price-wrapper">

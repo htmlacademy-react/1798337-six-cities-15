@@ -1,14 +1,16 @@
+import { ReviewType } from '../mock/reviews-mock';
 import ReviewForm from './review-form';
 import ReviewsList from './reviews-list';
 
-type reviewPropsType = {
+type ReviewPropsType = {
   isAuth: boolean;
-};
+  reviews: ReviewType[];
+}
 
-export default function Review(isAuth:reviewPropsType) {
+export default function Review({isAuth, reviews}:ReviewPropsType) {
   return(
     <>
-      <ReviewsList />
+      <ReviewsList reviews = {reviews} />
       {isAuth && <ReviewForm />}
     </>
   );

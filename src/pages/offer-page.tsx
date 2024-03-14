@@ -3,14 +3,23 @@ import { useParams } from 'react-router-dom';
 import { getAuthorizationStatus } from '../utils/authtorization-status';
 import { OfferType } from '../mock/offers-mock';
 import NotFoundPage from './not-found-page';
-import ReviewForm from '../components/review-form';
 import Review from '../components/review';
+import { ReviewType } from '../mock/reviews-mock';
+
+// type OfferPageProps = {
+//   offers: OfferType[];
+// }
+
+// type ReviewProps = {
+//   reviews: ReviewType[];
+// }
 
 type OfferPageProps = {
   offers: OfferType[];
+  reviews: ReviewType[];
 }
 
-function OfferPage({offers}:OfferPageProps): JSX.Element {
+function OfferPage({offers, reviews}: OfferPageProps): JSX.Element {
   const authorizationStatus = getAuthorizationStatus();
   const {id} = useParams();
   const currentOffer: OfferType | undefined = offers.find((offer: OfferType) => offer.id === id);
@@ -19,7 +28,9 @@ function OfferPage({offers}:OfferPageProps): JSX.Element {
     return <NotFoundPage />;
   }
 
-  const {images, isPremium, title, rating, host,price,type, description, goods} = currentOffer;
+  const {images, isPremium, title, rating, host, price, type, description, goods, bedrooms, maxAdults} = currentOffer;
+  const ratingInProsent = `${rating * 20}%`;
+
 
   return (
     <main className="page__main page__main--offer">
@@ -53,7 +64,7 @@ function OfferPage({offers}:OfferPageProps): JSX.Element {
             </div>
             <div className="offer__rating rating">
               <div className="offer__stars rating__stars">
-                <span style={{width: '80%'}}></span>
+                <span style={{width: ratingInProsent}}></span>
                 <span className="visually-hidden">Rating</span>
               </div>
               <span className="offer__rating-value rating__value">{rating}</span>
@@ -63,10 +74,10 @@ function OfferPage({offers}:OfferPageProps): JSX.Element {
                 {type}
               </li>
               <li className="offer__feature offer__feature--bedrooms">
-                3 Bedrooms
+                {bedrooms} Bedrooms
               </li>
               <li className="offer__feature offer__feature--adults">
-                Max 4 adults
+                Max {maxAdults} adults
               </li>
             </ul>
             <div className="offer__price">
@@ -104,10 +115,9 @@ function OfferPage({offers}:OfferPageProps): JSX.Element {
               </div>
               <div className="offer__description">
                 <p className="offer__text">{description}</p>
-
               </div>
             </div>
-            <Review isAuth={authorizationStatus === AuthorizationStatus.Authorization}/>
+            <Review isAuth={authorizationStatus === AuthorizationStatus.Authorization} reviews = {reviews}/>
           </div>
         </div>
         <section className="offer__map map"></section>

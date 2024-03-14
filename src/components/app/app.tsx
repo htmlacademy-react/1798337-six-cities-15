@@ -13,12 +13,14 @@ import {
   Routes,
   Route
 } from 'react-router-dom';
+import { ReviewType } from '../../mock/reviews-mock';
 
-type Offers = {
+type AppProps = {
   offers: OfferType[];
+  reviews: ReviewType[];
 }
 
-function App({offers} : Offers): JSX.Element {
+function App({offers, reviews}: AppProps): JSX.Element {
   const authorizationStatus = getAuthorizationStatus();
 
   return (
@@ -52,7 +54,7 @@ function App({offers} : Offers): JSX.Element {
 
           <Route
             path={AppRoute.Offer}
-            element={<OfferPage offers={offers} />}
+            element={<OfferPage offers={offers} reviews={reviews} />}
           />
           <Route
             path={'*'}
