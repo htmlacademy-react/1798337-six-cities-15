@@ -1,12 +1,17 @@
 import FavoritesCardList from '../components/favorites-card-list';
+import { OfferType } from '../mock/offers-mock';
 
-function FavoritePage(): JSX.Element {
+type MainPageProps = {
+  offers: OfferType[];
+}
+
+function FavoritePage({offers}:MainPageProps): JSX.Element {
   return (
     <main className="page__main page__main--favorites">
       <div className="page__favorites-container container">
         <section className="favorites">
           <h1 className="favorites__title">Saved listing</h1>
-          <FavoritesCardList />
+          <FavoritesCardList offers = {offers} cardClassName='favorites' />
         </section>
       </div>
     </main>

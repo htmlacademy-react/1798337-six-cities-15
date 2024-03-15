@@ -3,7 +3,7 @@ import { Nullable } from 'vitest';
 import { useEffect, useState } from 'react';
 import OfferCard from './offer-card';
 
-function OffersCardList(props: { offers: OfferType[] }): JSX.Element {
+function OffersCardList(props: { offers: OfferType[]; cardClassName:string }): JSX.Element {
   const [activeOffer, setActiveOffer] = useState<Nullable<OfferType>>(null);
   const handleOfferHover = (offer?: OfferType) => {
     setActiveOffer(offer || null);
@@ -18,6 +18,7 @@ function OffersCardList(props: { offers: OfferType[] }): JSX.Element {
           key = {offer.id}
           offer = {offer}
           handleHover = {handleOfferHover}
+          cardClassName={props.cardClassName}
         />
       ))}
     </div>
