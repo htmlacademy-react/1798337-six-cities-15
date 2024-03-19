@@ -1,10 +1,9 @@
-import { ReviewType } from '../mock/reviews-mock';
+import type { ReviewType } from '../mock/reviews-mock';
+import ratingInProsent from '../utils/utils';
 
 type ReviewsListProps = {
   reviews: ReviewType[];
 };
-
-// const ratingInProsent = `${rating * 20}%`;
 
 export default function ReviewsList ({reviews}:ReviewsListProps) {
 
@@ -23,7 +22,7 @@ export default function ReviewsList ({reviews}:ReviewsListProps) {
           <div className="reviews__info">
             <div className="reviews__rating rating">
               <div className="reviews__stars rating__stars">
-                <span style={{width: `${review.rating * 20}%`}}></span>
+                <span style={{width: ratingInProsent(review.rating)}}></span>
                 <span className="visually-hidden">Rating</span>
               </div>
             </div>

@@ -5,7 +5,7 @@ import OfferPage from '../../pages/offer-page';
 import NotFoundPage from '../../pages/not-found-page';
 import PrivateRoute from '../private-route';
 import Layout from '../layout/layout';
-import { OfferType } from '../../mock/offers-mock';
+import type { OfferType } from '../../mock/offers-mock';
 import { AppRoute } from '../const';
 import { getAuthorizationStatus } from '../../utils/authtorization-status';
 import {

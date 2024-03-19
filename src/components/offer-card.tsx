@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
-import { OfferType } from '../mock/offers-mock';
+import type { OfferType } from '../mock/offers-mock';
+import ratingInProsent from '../utils/utils';
 
 type OfferCardPropsType = {
   offer:OfferType;
@@ -12,7 +13,6 @@ function OfferCard({offer, handleHover, cardClassName}:OfferCardPropsType): JSX.
   const {id, title, type, price, isFavorite, isPremium, rating, images} = offer;
 
   const classFavoriteButton = isFavorite ? 'place-card__bookmark-button--active' : '';
-  const ratingInProsent = `${rating * 20}%`;
 
   const handleMouseOn = () => {
     handleHover(offer);
@@ -46,7 +46,7 @@ function OfferCard({offer, handleHover, cardClassName}:OfferCardPropsType): JSX.
           </div>
           <div className="place-card__rating rating">
             <div className="place-card__stars rating__stars">
-              <span style={{ width: ratingInProsent}}></span>
+              <span style={{ width: ratingInProsent(rating)}}></span>
               <span className="visually-hidden">Rating</span>
             </div>
           </div>

@@ -1,10 +1,11 @@
 import { AuthorizationStatus } from '../components/const';
 import { useParams } from 'react-router-dom';
 import { getAuthorizationStatus } from '../utils/authtorization-status';
-import { OfferType } from '../mock/offers-mock';
+import type { OfferType } from '../mock/offers-mock';
 import NotFoundPage from './not-found-page';
 import Review from '../components/review';
-import { ReviewType } from '../mock/reviews-mock';
+import type { ReviewType } from '../mock/reviews-mock';
+import ratingInProsent from '../utils/utils';
 
 type OfferPageProps = {
   offers: OfferType[];
@@ -21,8 +22,6 @@ function OfferPage({offers, reviews}: OfferPageProps): JSX.Element {
   }
 
   const {images, isPremium, title, rating, host, price, type, description, goods, bedrooms, maxAdults} = currentOffer;
-  const ratingInProsent = `${rating * 20}%`;
-
 
   return (
     <main className="page__main page__main--offer">
@@ -56,7 +55,7 @@ function OfferPage({offers, reviews}: OfferPageProps): JSX.Element {
             </div>
             <div className="offer__rating rating">
               <div className="offer__stars rating__stars">
-                <span style={{width: ratingInProsent}}></span>
+                <span style={{width: ratingInProsent(rating)}}></span>
                 <span className="visually-hidden">Rating</span>
               </div>
               <span className="offer__rating-value rating__value">{rating}</span>

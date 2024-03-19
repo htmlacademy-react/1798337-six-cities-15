@@ -10,6 +10,7 @@ export default function ReviewForm() {
     const {name, value} = event.currentTarget;
     setReview ({ ...review, [name] : value});
   };
+  const lengthReview = 50;
 
   const rating = [
     {value: 5, title: 'perfect'},
@@ -59,7 +60,7 @@ export default function ReviewForm() {
         <button
           className="reviews__submit form__submit button"
           type="submit"
-          disabled = {review.review.length < 50 || review.rating === 0}
+          disabled = {review.review.length < lengthReview || review.rating === 0}
         >
           Submit
         </button>

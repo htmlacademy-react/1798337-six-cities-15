@@ -1,18 +1,15 @@
-import { OfferType } from '../mock/offers-mock';
+import type { OfferType } from '../mock/offers-mock';
 import OfferCard from './offer-card';
-import { useEffect } from 'react';
 import { useState } from 'react';
 import { Nullable } from 'vitest';
 
 export default function FavoritesCardList(props: { offers: OfferType[]; cardClassName:string }) {
   const {offers, cardClassName} = props;
 
-  const [activeOffer, setActiveOffer] = useState<Nullable<OfferType>>(null);
+  const [, setActiveOffer] = useState<Nullable<OfferType>>(null);
   const handleOfferHover = (offer?: OfferType) => {
     setActiveOffer(offer || null);
   };
-
-  useEffect(() => console.log(activeOffer));
 
   return(
     <ul className="favorites__list">

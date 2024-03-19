@@ -1,7 +1,7 @@
 // import DestinationNavigationList from '../components/destination-navigation-list.js';
 // import { DESTINATIONS } from '../components/const.ts';
 import OffersCardList from '../components/offers-card-list';
-import { OfferType } from '../mock/offers-mock';
+import type { OfferType } from '../mock/offers-mock';
 
 type MainPageProps = {
   offers: OfferType[];

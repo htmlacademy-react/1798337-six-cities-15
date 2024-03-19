@@ -1,5 +1,5 @@
 import FavoritesCardList from '../components/favorites-card-list';
-import { OfferType } from '../mock/offers-mock';
+import type { OfferType } from '../mock/offers-mock';
 
 type MainPageProps = {
   offers: OfferType[];

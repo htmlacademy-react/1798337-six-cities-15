@@ -1,15 +1,13 @@
-import { OfferType } from '../mock/offers-mock';
+import type { OfferType } from '../mock/offers-mock';
 import { Nullable } from 'vitest';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import OfferCard from './offer-card';
 
 function OffersCardList(props: { offers: OfferType[]; cardClassName:string }): JSX.Element {
-  const [activeOffer, setActiveOffer] = useState<Nullable<OfferType>>(null);
+  const [, setActiveOffer] = useState<Nullable<OfferType>>(null);
   const handleOfferHover = (offer?: OfferType) => {
     setActiveOffer(offer || null);
   };
-
-  useEffect(() => console.log(activeOffer));
 
   return (
     <div className="cities__places-list places__list tabs__content">

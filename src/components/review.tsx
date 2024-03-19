@@ -1,4 +1,4 @@
-import { ReviewType } from '../mock/reviews-mock';
+import type { ReviewType } from '../mock/reviews-mock';
 import ReviewForm from './review-form';
 import ReviewsList from './reviews-list';
 
