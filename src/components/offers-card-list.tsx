@@ -1,13 +1,9 @@
-import type { OfferType } from '../mock/offers-mock';
-// import { Nullable } from 'vitest';
+import type { CityType, OfferType } from '../mock/offers-mock';
 import { useState } from 'react';
 import OfferCard from './offer-card';
 import Map from './map/map';
-import { cities1 } from '../mock/cities-mock';
 
-
-function OffersCardList(props: { offers: OfferType[]; cardClassName:string }): JSX.Element {
-  // const [activeOffer, setActiveOffer] = useState<Nullable<OfferType>>(null);
+function OffersCardList(props: { offers: OfferType[]; cardClassName:string; activeCity:CityType['name'] }): JSX.Element {
   const [activeOffer, setActiveOffer] = useState<OfferType | null>(null);
   const handleOfferHover = (offer?: OfferType) => {
     setActiveOffer(offer || null);
@@ -45,7 +41,7 @@ function OffersCardList(props: { offers: OfferType[]; cardClassName:string }): J
         </div>
       </section>
       <div className="cities__right-section">
-        <Map activeCity={cities1[0]} offers={props.offers} activeOffer = {activeOffer} />
+        <Map activeCity={props.activeCity} offers={props.offers} activeOffer = {activeOffer} />
       </div>
     </div>
   );

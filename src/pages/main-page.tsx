@@ -1,7 +1,21 @@
-// import DestinationNavigationList from '../components/destination-navigation-list.js';
-// import { DESTINATIONS } from '../components/const.ts';
+import CitiesNavigationList from '../components/cities-navigation/cities-navigation-list.js';
 import OffersCardList from '../components/offers-card-list';
 import type { OfferType } from '../mock/offers-mock';
+import { CitiesType, cities } from '../mock/cities-mock.ts';
+import { useState } from 'react';
+
+export type CitiesList = 'Paris' | 'Cologne' | 'Brussels' | 'Amsterdam' | 'Hamburg' | 'Dusseldorf';
+
+export type LocationType = {
+  latitude: number;
+  longitude: number;
+  zoom: number;
+}
+
+export type CityPropsType = {
+  name: CitiesList;
+  location: LocationType;
+}
 
 type MainPageProps = {
   offers: OfferType[];
@@ -9,48 +23,21 @@ type MainPageProps = {
 
 function MainPage({offers}:MainPageProps): JSX.Element {
 
+  const [activeCity, setActiveCity] = useState<CitiesType['name']>(cities[3].name);
+
+  function onCityItemClick(cityName: CitiesType['name']): void {
+    cities.find((city) => {
+      if (city.name === cityName) {
+        setActiveCity(cityName);
+      }
+    });
+  }
+
   return (
     <main className="page__main page__main--index">
-      {/* <DestinationNavigationList destinations = {DESTINATIONS} /> */}
-      <h1 className="visually-hidden">Cities</h1>
-      <div className="tabs">
-        <section className="locations container">
-          <ul className="locations__list tabs__list">
-            <li className="locations__item">
-              <a className="locations__item-link tabs__item" href="#">
-                <span>Paris</span>
-              </a>
-            </li>
-            <li className="locations__item">
-              <a className="locations__item-link tabs__item" href="#">
-                <span>Cologne</span>
-              </a>
-            </li>
-            <li className="locations__item">
-              <a className="locations__item-link tabs__item" href="#">
-                <span>Brussels</span>
-              </a>
-            </li>
-            <li className="locations__item">
-              <a className="locations__item-link tabs__item tabs__item--active">
-                <span>Amsterdam</span>
-              </a>
-            </li>
-            <li className="locations__item">
-              <a className="locations__item-link tabs__item" href="#">
-                <span>Hamburg</span>
-              </a>
-            </li>
-            <li className="locations__item">
-              <a className="locations__item-link tabs__item" href="#">
-                <span>Dusseldorf</span>
-              </a>
-            </li>
-          </ul>
-        </section>
-      </div>
+      <CitiesNavigationList destinations = {cities} activeCity = {activeCity} onCityItemClick={onCityItemClick} />
       <div className="cities">
-        <OffersCardList offers = {offers} cardClassName='cities' />
+        <OffersCardList offers = {offers} cardClassName='cities' activeCity = {activeCity} />
       </div>
     </main>
   );
