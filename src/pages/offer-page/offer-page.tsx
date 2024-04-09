@@ -18,18 +18,13 @@ type OfferPageProps = {
 function OfferPage({offers, reviews}: OfferPageProps): JSX.Element {
   const authorizationStatus = getAuthorizationStatus();
   const {id} = useParams();
-  const currentOffer: OfferType| undefined = offers.find((offer: OfferType) => offer.id === id);
+  const currentOffer: OfferType | undefined = offers.find((offer: OfferType) => offer.id === id);
   const nearOffers = getNearOffers(currentOffer);
   const nearOffersPlusCurrent = [currentOffer, ...nearOffers];
-  console.log(nearOffers);
 
   if (!currentOffer) {
     return <NotFoundPage />;
   }
-
-  const handleOfferHover = (offer?: OfferType) => {
-    setActiveOffer(offer || null);
-  };
 
   const {images, isPremium, title, rating, host, price, type, description, goods, bedrooms, maxAdults} = currentOffer;
 
@@ -128,7 +123,7 @@ function OfferPage({offers, reviews}: OfferPageProps): JSX.Element {
           <h2 className="near-places__title">Other places in the neighbourhood</h2>
           <div className="near-places__list places__list">
             {nearOffers.map((offer) => (
-              <OfferCard key={offer.id} offer={offer} cardClassName='near-places' handleHover={handleOfferHover}/>
+              <OfferCard key={offer.id} offer={offer} cardClassName='near-places' />
             ))}
           </div>
         </section>

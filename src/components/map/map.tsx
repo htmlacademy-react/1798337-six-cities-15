@@ -8,7 +8,7 @@ import { CitiesType, cities } from '../../mock/cities-mock';
 
 export type MapPropsType = {
   activeCity: CitiesType['name'];
-  offers: OfferType[];
+  offers: OfferType[] ;
   activeOffer?: OfferType | null;
   className?: string;
 };
